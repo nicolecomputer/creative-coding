@@ -63,6 +63,18 @@ class Walker {
   }
 }
 
+function signature() {
+  fill("#F8FFE5");
+  noStroke();
+  rect(360, 360, 30);
+
+  const textColor = color("red");
+  textColor.setAlpha(120);
+  strokeWeight(2);
+  stroke(textColor);
+  text("NW", 365, 380);
+}
+
 let walker;
 function setup() {
   walker = new Walker(400, 400, "#06D6A0");
@@ -77,6 +89,7 @@ function update() {
 function draw() {
   update();
   background("#F8FFE5");
+  signature();
 
   const watermelon = color("#EF476F");
 
