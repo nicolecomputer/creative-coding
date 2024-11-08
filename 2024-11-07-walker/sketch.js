@@ -1,9 +1,9 @@
 class Walker {
-  constructor(width, height, x, y, color) {
+  constructor(width, height, color) {
     this.width = width;
     this.height = height;
-    this.x = x;
-    this.y = y;
+    this.x = floor(random(width-10));
+    this.y = floor(random(height-10));
     this.active = true;
     this.numSteps = 0;
     this.color = color;
@@ -61,14 +61,10 @@ let walkers = [];
 
 function setup() {
   createCanvas(400, 400);
-  background("#F8FFE5");
+  resetSketch()
 
-  walkers = [
-    new Walker(400, 400, 200, 200, "#06D6A0"),
-    new Walker(400, 400, 350, 350, "#EF476F"),
-    new Walker(400, 400, 120, 350, "#1B9AAA"),
-    new Walker(400, 400, 90, 90, "#FFC43D"),
-  ];
+  let button = createButton("reset sketch");
+  button.mousePressed(resetSketch);
 }
 
 function draw() {
@@ -76,4 +72,16 @@ function draw() {
     walker.update();
     walker.draw();
   }
+}
+
+function resetSketch() {
+  background("#F8FFE5");
+
+  walkers = [
+    new Walker(400, 400, "#06D6A0"),
+    new Walker(400, 400, "#EF476F"),
+    new Walker(400, 400, "#1B9AAA"),
+    new Walker(400, 400, "#FFC43D"),
+  ];
+
 }
