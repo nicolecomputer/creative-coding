@@ -145,7 +145,16 @@ class Friend {
       this.state = {
         type: "move-on",
         timeRemaining: 8,
-        direction: random(["UP", "DOWN", "LEFT", "RIGHT"]),
+        direction: random([
+          "UP",
+          "DOWN",
+          "LEFT",
+          "RIGHT",
+          "UP-RIGHT",
+          "UP-LEFT",
+          "DOWN-RIGHT",
+          "DOWN-LEFT",
+        ]),
       };
       return;
     }
