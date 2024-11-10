@@ -1,8 +1,8 @@
 class Friend {
-  constructor() {
+  constructor(icon) {
     this.x = 200;
     this.y = 200;
-    this.icon = loadImage("/assets/icon.png");
+    this.icon = icon;
   }
 
   move(direction) {
@@ -50,14 +50,20 @@ class Friend {
   }
 }
 
-let friend = new Friend();
+let friend;
 let time = 0;
 
 function setup() {
   createCanvas(400, 400);
+
+  const img = loadImage("/assets/icon.png");
+  friend = new Friend(img);
 }
 
 function keyPressed() {
+  if (friend === null) {
+    return;
+  }
   if (keyCode === UP_ARROW) {
     friend.move("UP");
   } else if (keyCode === DOWN_ARROW) {
