@@ -99,7 +99,7 @@ class Friend {
   }
 
   update(width, height, time) {
-    if (time % 5 !== 0) {
+    if (time % 8 !== 0) {
       return;
     }
     const availableMoves = this.canMove(width, height);
