@@ -75,8 +75,22 @@ function keyPressed() {
   }
 }
 
+function signature() {
+  fill("#EEF2E4");
+  noStroke();
+  rect(360, 360, 30);
+
+  const textColor = color("red");
+  textColor.setAlpha(120);
+  strokeWeight(2);
+  stroke(textColor);
+  text("NW", 365, 380);
+}
+
 function draw() {
   background("#F8FFE5");
+  signature();
+
   friend.draw(time);
 
   time += 1;
