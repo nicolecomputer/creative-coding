@@ -56,7 +56,7 @@ let time = 0;
 function setup() {
   createCanvas(400, 400);
 
-  const img = loadImage("/assets/icon.png");
+  const img = loadImage("./assets/icon.png");
   friend = new Friend(img);
 }
 
