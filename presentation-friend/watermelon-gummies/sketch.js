@@ -9,6 +9,8 @@ let gummies = [];
 time = 0;
 active = false;
 
+let buttons = [];
+
 function setup() {
   createCanvas(490, 550);
   angleMode(DEGREES);
@@ -71,12 +73,27 @@ function drawUI(isActive) {
 }
 
 function mouseClicked() {
+  if (mouseX >= 440 && mouseX <= 440 + 30 && mouseY > 16 && mouseY <= 16 + 30) {
+    playPause();
+  } else if (
+    mouseX >= 405 &&
+    mouseX <= 405 + 30 &&
+    mouseY > 16 &&
+    mouseY <= 16 + 30
+  ) {
+    reset();
+  }
+}
+
+function playPause() {
   active = !active;
 }
 
-function playPause() {}
-
-function reset() {}
+function reset() {
+  active = false;
+  time = 0;
+  gummies = [];
+}
 
 function draw() {
   update();
