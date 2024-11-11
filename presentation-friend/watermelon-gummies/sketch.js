@@ -2,6 +2,7 @@ let gummy;
 let friend;
 let play;
 let pause;
+let restart;
 
 // {x, y, size}
 let gummies = [];
@@ -16,6 +17,7 @@ function setup() {
   friend = loadImage("Friend.png");
   play = loadImage("play.png");
   pause = loadImage("pause.png");
+  restart = loadImage("restart.png");
 }
 
 function update() {
@@ -50,8 +52,8 @@ function drawUI(isActive) {
 
   fill("white");
   textStyle(BOLD);
-  textSize(16);
-  text("Inside Friend's mind", 90, 24);
+  textSize(18);
+  text("Deep inner thoughts", 90, 35);
 
   fill("rgba(255,255,255,0.5)");
   rect(400, 5, 80, 50, 4);
@@ -61,12 +63,20 @@ function drawUI(isActive) {
     statusIcon = play;
   }
 
-  image(statusIcon, 423, 10, 40, 40);
+  image(statusIcon, 440, 16, 30, 30);
+
+  if (time > 0) {
+    image(restart, 405, 16, 30, 30);
+  }
 }
 
 function mouseClicked() {
   active = !active;
 }
+
+function playPause() {}
+
+function reset() {}
 
 function draw() {
   update();
