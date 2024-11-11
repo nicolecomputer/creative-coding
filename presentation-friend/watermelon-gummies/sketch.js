@@ -121,9 +121,21 @@ function mouseClicked() {
   }
 }
 
+function signature() {
+  fill("#EEF2E4");
+
+  const textColor = color("red");
+  textColor.setAlpha(80);
+  strokeWeight(2);
+  stroke(textColor);
+  text("NW", 450, 540);
+}
+
 function draw() {
   update();
   background("#F8FFE5");
+
+  signature();
 
   for (const g of gummies) {
     push();
