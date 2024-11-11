@@ -78,12 +78,28 @@ function drawUI(isActive) {
     statusIcon = play;
   }
 
-  const { play, reset } = buttons;
-  image(statusIcon, play.x, play.y, play.width, play.height);
+  const { reset } = buttons;
+  image(
+    statusIcon,
+    buttons.play.x,
+    buttons.play.y,
+    buttons.play.width,
+    buttons.play.height
+  );
 
   if (time > 0) {
     image(restart, reset.x, reset.y, reset.width, reset.height);
   }
+}
+
+function playPause() {
+  active = !active;
+}
+
+function resetSketch() {
+  active = false;
+  time = 0;
+  gummies = [];
 }
 
 function mouseClicked() {
@@ -101,18 +117,8 @@ function mouseClicked() {
     mouseY > reset.y &&
     mouseY <= reset.y + reset.height
   ) {
-    reset();
+    resetSketch();
   }
-}
-
-function playPause() {
-  active = !active;
-}
-
-function reset() {
-  active = false;
-  time = 0;
-  gummies = [];
 }
 
 function draw() {
