@@ -9,7 +9,20 @@ let gummies = [];
 time = 0;
 active = false;
 
-let buttons = [];
+let buttons = {
+  play: {
+    x: 440,
+    y: 16,
+    width: 30,
+    height: 30,
+  },
+  reset: {
+    x: 405,
+    y: 16,
+    width: 30,
+    height: 30,
+  },
+};
 
 function setup() {
   createCanvas(490, 550);
@@ -65,21 +78,28 @@ function drawUI(isActive) {
     statusIcon = play;
   }
 
-  image(statusIcon, 440, 16, 30, 30);
+  const { play, reset } = buttons;
+  image(statusIcon, play.x, play.y, play.width, play.height);
 
   if (time > 0) {
-    image(restart, 405, 16, 30, 30);
+    image(restart, reset.x, reset.y, reset.width, reset.height);
   }
 }
 
 function mouseClicked() {
-  if (mouseX >= 440 && mouseX <= 440 + 30 && mouseY > 16 && mouseY <= 16 + 30) {
+  const { play, reset } = buttons;
+  if (
+    mouseX >= play.x &&
+    mouseX <= play.x + width &&
+    mouseY > play.y &&
+    mouseY <= play.y + height
+  ) {
     playPause();
   } else if (
-    mouseX >= 405 &&
-    mouseX <= 405 + 30 &&
-    mouseY > 16 &&
-    mouseY <= 16 + 30
+    mouseX >= reset.x &&
+    mouseX <= reset.x + reset.width &&
+    mouseY > reset.y &&
+    mouseY <= reset.y + reset.height
   ) {
     reset();
   }
