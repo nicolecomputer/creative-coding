@@ -1,10 +1,12 @@
 let gummy;
 let friend;
 let play;
+let pause;
 
 // {x, y, size}
 let gummies = [];
 time = 0;
+active = false;
 
 function setup() {
   createCanvas(490, 550);
@@ -13,9 +15,13 @@ function setup() {
   gummy = loadImage("gummy.png");
   friend = loadImage("Friend.png");
   play = loadImage("play.png");
+  pause = loadImage("pause.png");
 }
 
 function update() {
+  if (!active) {
+    return;
+  }
   time += 1;
 
   if (time < 30 || time % 3 === 0) {
@@ -28,19 +34,7 @@ function update() {
   }
 }
 
-function draw() {
-  update();
-  background("#F8FFE5");
-
-  for (const g of gummies) {
-    push();
-    translate(g.x, g.y);
-    imageMode(CENTER);
-    rotate(g.rotation);
-    image(gummy, 0, 0, g.size, g.size);
-    pop();
-  }
-
+function drawUI(isActive) {
   fill("rgba(0,0,0,0.2)");
   noStroke();
   rect(0, 0, 490, 62);
@@ -62,5 +56,30 @@ function draw() {
   fill("rgba(255,255,255,0.5)");
   rect(400, 5, 80, 50, 4);
 
-  image(play, 423, 10, 40, 40);
+  let statusIcon = pause;
+  if (!isActive) {
+    statusIcon = play;
+  }
+
+  image(statusIcon, 423, 10, 40, 40);
+}
+
+function mouseClicked() {
+  active = !active;
+}
+
+function draw() {
+  update();
+  background("#F8FFE5");
+
+  for (const g of gummies) {
+    push();
+    translate(g.x, g.y);
+    imageMode(CENTER);
+    rotate(g.rotation);
+    image(gummy, 0, 0, g.size, g.size);
+    pop();
+  }
+
+  drawUI(active);
 }
