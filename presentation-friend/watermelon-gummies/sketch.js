@@ -1,6 +1,6 @@
 let gummy;
 function setup() {
-  createCanvas(490, 560);
+  createCanvas(490, 550);
 
   gummy = loadImage("gummy.png");
 }
@@ -10,5 +10,5 @@ function draw() {
   image(gummy, 200, 200);
 
   fill("red");
-  rect(0, 558, 495, 473);
+  rect(0, 548, 495, 473);
 }
