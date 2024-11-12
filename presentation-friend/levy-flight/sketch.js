@@ -1,4 +1,4 @@
-const title = "A Normal Day";
+const title = "Walking and Exploring";
 
 class Friend {
   constructor(icon, x, y) {
