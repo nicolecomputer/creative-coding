@@ -111,7 +111,46 @@ class Friend {
   }
 }
 
+class Historian {
+  constructor(width, height, moveSize) {
+    this.worldWidth = width;
+    this.worldHeight = height;
+    this.moveSize = moveSize;
+
+    this.history = [];
+
+    this.spotsExplored = 0;
+  }
+
+  record(mover) {
+    this.history.push({
+      x: mover.x,
+      y: mover.y,
+    });
+
+    const asCoords = this.history.map((l) => `${l.x},${l.y}`);
+    this.spotsExplored = new Set(asCoords).size;
+  }
+
+  draw() {
+    const historyColor = color("#EF476F");
+    historyColor.setAlpha(10);
+
+    for (const h of this.history) {
+      noStroke();
+      fill(historyColor);
+      circle(h.x, h.y, 8);
+    }
+
+    noStroke();
+    textSize(14);
+    fill("#393B35");
+    text(`${this.spotsExplored} spots explored`, 5, this.worldHeight - 10);
+  }
+}
+
 let explorer;
+let historian;
 
 let gummy;
 let friend;
@@ -157,6 +196,7 @@ function setup() {
     dimensions.width / 2,
     dimensions.height / 2
   );
+  historian = new Historian(dimensions.width, dimensions.height, 8);
 }
 
 function update() {
@@ -164,6 +204,11 @@ function update() {
     return;
   }
 
+  if (time > 400) {
+    return;
+  }
+
+  historian.record(explorer);
   explorer.update(dimensions.width, dimensions.height, time);
 
   time += 1;
@@ -223,6 +268,8 @@ function resetSketch() {
     dimensions.width / 2,
     dimensions.height / 2
   );
+
+  historian = new Historian(dimensions.width, dimensions.height, 8);
 }
 
 function mouseClicked() {
@@ -260,6 +307,7 @@ function draw() {
 
   signature();
 
+  historian.draw();
   explorer.draw(time);
 
   drawUI(active);
