@@ -94,7 +94,7 @@ function draw() {
   const sleepColor = color("white");
   sleepColor.setAlpha(map(sin(sleep), -1, 1, 120, 240));
   fill(sleepColor);
-  text("go back to sleep.", 90, 350);
+  text("go back to sleep.", 30, 350);
 
   signature();
 }
