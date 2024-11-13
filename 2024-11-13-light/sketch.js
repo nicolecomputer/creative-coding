@@ -6,7 +6,7 @@ function setup() {
   for (let i = 0; i < 22; i++) {
     lights.push({
       position: createVector(random(0, 400), random(0, 220)),
-      offset: createVector(random(-0.6, -1.5), random(0, 0.8)),
+      offset: createVector(random(-0.3, -0.6), random(0, 0.8)),
       life: random(0, 200),
       size: randomGaussian(70, 14),
       color: random([
@@ -65,7 +65,7 @@ function draw() {
 
   for (const light of lights) {
     const c = color(light.color);
-    c.setAlpha(map(cos(light.life / 10), 0, 1, 40, 220));
+    c.setAlpha(map(cos(light.life / 20), 0, 1, 40, 220));
 
     fill(c);
     noStroke();
