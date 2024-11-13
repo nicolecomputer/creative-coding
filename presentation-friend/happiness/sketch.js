@@ -42,7 +42,7 @@ function update() {
   }
   time += 1;
 
-  if ((time > 140) & (time % 3 === 0) && time < 400) {
+  if ((time > 120) & (time % 3 === 0) && time < 400) {
     const colors = [
       "#669900",
       "#99CC33",
@@ -58,7 +58,7 @@ function update() {
     circles.push({
       x: width / 2,
       y: height / 2,
-      radius: (time - 140) * 4,
+      radius: (time - 100) * 4,
       color: random(colors),
     });
   }
@@ -117,6 +117,7 @@ function resetSketch() {
   active = false;
   circles = [];
   time = 0;
+  friendOffset = 0;
 }
 
 function mouseClicked() {
