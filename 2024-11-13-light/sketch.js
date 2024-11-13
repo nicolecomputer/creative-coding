@@ -1,4 +1,5 @@
 let lights = [];
+let sleep = 0;
 
 function setup() {
   createCanvas(400, 400);
@@ -44,6 +45,8 @@ function update() {
       light.position.y = random(0, 80);
     }
   }
+
+  sleep += 0.02;
 }
 
 function signature() {
@@ -87,7 +90,11 @@ function draw() {
 
   textStyle("normal");
   text("we'll be there soon,", 60, 330);
-  text("go back to sleep,", 90, 350);
+
+  const sleepColor = color("white");
+  sleepColor.setAlpha(map(sin(sleep), -1, 1, 120, 240));
+  fill(sleepColor);
+  text("go back to sleep.", 90, 350);
 
   signature();
 }
