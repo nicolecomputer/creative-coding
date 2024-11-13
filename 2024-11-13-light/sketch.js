@@ -86,15 +86,15 @@ function draw() {
   textSize(14);
 
   textStyle("bold");
-  text("oh my love,", 30, 310);
+  text("oh my love,", 150, 310);
 
   textStyle("normal");
-  text("we'll be there soon,", 60, 330);
+  text("heartbroken and sleepy it won't be long", 60, 330);
 
   const sleepColor = color("white");
-  sleepColor.setAlpha(map(sin(sleep), -1, 1, 120, 240));
+  sleepColor.setAlpha(map(sin(sleep), -1, 1, 40, 240));
   fill(sleepColor);
-  text("go back to sleep.", 30, 350);
+  text("go back to sleep.", 140, 350);
 
   signature();
 }
