@@ -2,7 +2,7 @@ let balls = [];
 let canvas = {
   width: 500,
   height: 400,
-  depth: 400,
+  depth: 600,
 };
 
 function setup() {
@@ -10,7 +10,7 @@ function setup() {
 
   const colors = ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"];
   for (let i = 0; i < 4; i++) {
-    let size = randomGaussian(120, 8);
+    let size = 120;
     balls.push({
       position: createVector(
         random(size, canvas.width - size),
@@ -62,7 +62,11 @@ function draw() {
   for (const ball of sortedBalls) {
     noStroke();
     const targetColor = color(ball.color);
-    targetColor.setAlpha(map(ball.position.z, 0, canvas.depth, 255, 120));
+
+    let colorScale = map(ball.position.z, 0, canvas.depth, 1, 0.4);
+    targetColor.setRed(red(targetColor) * colorScale);
+    targetColor.setGreen(green(targetColor) * colorScale);
+    targetColor.setBlue(blue(targetColor) * colorScale);
 
     const scaleFactor = map(ball.position.z, 0, canvas.depth, 1, 0.1);
     fill(targetColor);
