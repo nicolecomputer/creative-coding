@@ -13,8 +13,8 @@ function setup() {
     balls.push({
       x: random(size, canvas.width - size),
       y: random(size, canvas.height - size),
-      speedX: randomGaussian(4, 2),
-      speedY: randomGaussian(4, 2),
+      speedX: randomGaussian(2, 2),
+      speedY: randomGaussian(2, 2),
       size: size,
       color: colors[i % colors.length],
     });
