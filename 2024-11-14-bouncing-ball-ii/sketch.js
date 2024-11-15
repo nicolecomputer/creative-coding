@@ -8,7 +8,7 @@ function setup() {
   createCanvas(canvas.width, canvas.height);
 
   const colors = ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"];
-  for (let i = 0; i < 12; i++) {
+  for (let i = 0; i < 25; i++) {
     let size = randomGaussian(60, 20);
     balls.push({
       position: createVector(
