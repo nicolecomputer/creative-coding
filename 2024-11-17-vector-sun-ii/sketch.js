@@ -70,5 +70,5 @@ function draw() {
 
   fill("black");
   noStroke();
-  text("I wish our end meant something", 150, 370);
+  text("I wonder if we'll ever see each other again", 150, 370);
 }
