@@ -90,7 +90,7 @@ class Spotlights {
     this.canvas = canvas;
 
     const colors = ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"];
-    for (let i = 0; i < 25; i++) {
+    for (let i = 0; i < 40; i++) {
       let size = randomGaussian(60, 20);
       this.balls.push({
         position: createVector(
